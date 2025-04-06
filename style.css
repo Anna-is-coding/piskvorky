@@ -94,3 +94,88 @@ body {
 .uvod__button--blue:hover {
   background-color: #0090e9;
 }
+
+/* HRA.html */
+.game__container {
+  display: flex;
+  flex-direction: column;
+  max-width: 80vmin;
+}
+
+.game__heading {
+  font-family: Lobster;
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  align-self: center;
+}
+
+.game__nav {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.game__player {
+  display: flex;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.5;
+  background: none;
+  border: none;
+  gap: 7%;
+  font-weight: bold;
+  align-items: center;
+}
+
+.game__player img {
+  height: 50%;
+}
+
+.game__icons {
+  display: flex;
+  justify-content: flex-end;
+  flex-basis: 50%;
+  gap: 5%;
+}
+
+.game__icon {
+  border: none;
+  padding: 2.5%;
+  border-radius: 10%;
+}
+
+.game__icon--green {
+  background-color: #1fcca4;
+}
+
+.game__icon--green:hover {
+  background-color: #1cbb96;
+}
+
+.game__icon--blue {
+  background-color: #0197f6;
+}
+
+.game__icon--blue:hover {
+  background-color: #0090e9;
+}
+
+.game__table {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 80vmin;
+}
+
+.game__btn {
+  border: 1px solid black;
+  opacity: 0.5;
+  cursor: pointer;
+  width: calc(8vmin);
+  height: calc(8vmin);
+}
+
+.game__btn:hover,
+.game__btn:focus {
+  opacity: 0.8;
+}
