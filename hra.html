@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hra</title>
     <link rel="stylesheet" href="style.css" />
+    <script type="module" src="hra.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,10 +18,12 @@
     <div class="game__container">
       <h1 class="game__heading">Piškvorky</h1>
       <div class="game__nav">
-        <button class="game__player">
-          <div>HRAJE:</div>
-          <img src="icons/circle.svg" alt="icon circle" />
-        </button>
+        <div class="game__player">
+          <p>HRAJE:</p>
+          <div class="circle__icon">
+            <img src="icons/circle.svg" alt="icon circle" />
+          </div>
+        </div>
 
         <div class="game__icons">
           <button class="game__icon game__icon--green">

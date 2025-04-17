@@ -179,3 +179,13 @@ body {
 .game__btn:focus {
   opacity: 0.8;
 }
+
+.board__field--circle {
+  background-image: url(icons/circle-table.svg);
+  background-size: cover;
+}
+
+.board__field--cross {
+  background-image: url(icons/cross-table.svg);
+  background-size: cover;
+}
