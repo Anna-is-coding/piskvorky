@@ -14,21 +14,19 @@ const boardState = () => {
 };
 
 const gameCheck = () => {
-  const winner = findWinner(boardState);
-  if (winner === 'x' || winner === 'o') {
+  const winner = findWinner(boardState());
+  if (winner === 'o' || winner === 'x') {
     setTimeout(() => {
       alert(`Vyhrál hráč se symbolem ${winner}.`);
-      window.location.reload();
-    }, 300);
-    return true;
+      location.reload();
+    }, 100);
   }
   if (winner === 'tie') {
-    alert(`Hra skončila nerozhodně.`);
-    window.location.reload();
-    return true;
+    setTimeout(() => {
+      alert(`Hra skončila nerozhodně.`);
+      location.reload();
+    }, 100);
   }
-
-  return false;
 };
 
 const aiPlayer = async () => {
@@ -45,33 +43,42 @@ const aiPlayer = async () => {
       }),
     },
   );
+
   const data = await response.json();
   const { x, y } = data.position;
   const index = x + y * 10;
   const targetField = allButtons[index];
 
-  if (targetField) {
+  if (!targetField) {
     console.error('Neexistující políčko na indexu:', index, data);
     return;
   }
+
   targetField.click();
 };
 
-allButtons.forEach((btn) => {
-  btn.addEventListener('click', (event) => {
-    event.target.disabled = true;
-    if (currentPlayer === 'circle') {
-      event.target.classList.add('board__field--circle');
-      currentPlayer = 'cross';
-    } else {
-      event.target.classList.add('board__field--cross');
-      currentPlayer = 'circle';
-    }
+const btnClickHandler = async (event) => {
+  const field = event.target;
+  field.disabled = true;
 
-    playerElement.src =
-      currentPlayer === 'circle' ? 'icons/circle.svg' : 'icons/cross.svg';
-    if (gameCheck() && currentPlayer === 'cross') {
-      setTimeout(aiPlayer, 5000);
-    }
-  });
+  if (currentPlayer === 'circle') {
+    field.classList.add('board__field--circle');
+    currentPlayer = 'cross';
+  } else {
+    field.classList.add('board__field--cross');
+    currentPlayer = 'circle';
+  }
+
+  playerElement.src =
+    currentPlayer === 'circle' ? 'icons/circle.svg' : 'icons/cross.svg';
+
+  gameCheck();
+
+  if (currentPlayer === 'cross') {
+    setTimeout(aiPlayer, 500);
+  }
+};
+
+allButtons.forEach((btn) => {
+  btn.addEventListener('click', btnClickHandler);
 });
